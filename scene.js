@@ -26,15 +26,19 @@ try {
   window.dispatchEvent(new CustomEvent('dl:ready'));
   throw e;
 }
-const DPR = Math.min(devicePixelRatio || 1, LOW ? 1.5 : 1.75);
+const probe = document.createElement('div');
+probe.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:100vh;height:100lvh;visibility:hidden;pointer-events:none';
+document.body.appendChild(probe);
+let CW = innerWidth, CH = Math.max(innerHeight, probe.offsetHeight || 0);
+let DPR = Math.min(devicePixelRatio || 1, LOW ? 1.5 : 1.75);
 renderer.setPixelRatio(DPR);
-renderer.setSize(innerWidth, innerHeight, false);
+renderer.setSize(CW, CH, false);
 renderer.toneMapping = THREE.NeutralToneMapping;
 renderer.toneMappingExposure = 1.25;
 
 const scene = new THREE.Scene();
 scene.fog = new THREE.FogExp2(0x141a3e, 0.019);
-const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 1500);
+const camera = new THREE.PerspectiveCamera(50, CW / CH, 0.1, 1500);
 
 const pmrem = new THREE.PMREMGenerator(renderer);
 scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -110,6 +114,8 @@ const sky = new THREE.Mesh(
         float n = noise(d * 3.0 + vec3(0.0, 0.0, uTime * 0.01)) * 0.6 + noise(d * 7.0) * 0.4;
         col *= 0.9 + 0.22 * n * smoothstep(-0.05, 0.4, y);
         gl_FragColor = vec4(col, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment>
       }`
   })
 );
@@ -139,7 +145,9 @@ scene.add(sky);
         vA = tw * smoothstep(0.0, 0.25, normalize(position).y);
         gl_PointSize = aSize * uPR * (0.8 + tw * 0.5); }`,
     fragmentShader: `varying float vA; void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.0, d);
-      gl_FragColor = vec4(vec3(0.85, 0.9, 1.0) * a * a * vA * 1.3, 1.0); }`
+      gl_FragColor = vec4(vec3(0.85, 0.9, 1.0) * a * a * vA * 1.3, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment> }`
   });
   const stars = new THREE.Points(g, m); stars.renderOrder = -9; stars.frustumCulled = false;
   scene.add(stars);
@@ -161,7 +169,7 @@ const clouds = new THREE.Group(); scene.add(clouds);
     }
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
   });
-  const n = LOW ? 55 : 110, lav = lin('#4f63a6'), pink = lin('#8a74a8'), deep = lin('#26336e');
+  const n = LOW ? 30 : 110, lav = lin('#4f63a6'), pink = lin('#8a74a8'), deep = lin('#26336e');
   for (let i = 0; i < n; i++) {
     const r = 5 + Math.pow(rand(), 0.75) * 60, th = rand() * Math.PI * 2;
     const col = lav.clone().lerp(rand() < 0.35 ? pink : deep, rand() * 0.8);
@@ -187,11 +195,11 @@ band.scale.set(90, 16, 1); band.position.set(0, -2.2, -30); scene.add(band);
 const riverMat = new THREE.ShaderMaterial({
   transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
   uniforms: {
-    uTime: { value: 0 }, uScale: { value: 1 }, uFlow: { value: 1 },
+    uTime: { value: 0 }, uScale: { value: 1 }, uFlow: { value: 1 }, uMaxPt: { value: LOW ? 36 : 70 },
     uCore: { value: lin('#fff2e6') }, uPink: { value: lin('#f5bcd6') }, uLav: { value: lin('#a8b6ff') }, uCyan: { value: lin('#7fe6ff') }
   },
   vertexShader: `
-    uniform float uTime, uScale, uFlow; uniform vec3 uCore,uPink,uLav,uCyan;
+    uniform float uTime, uScale, uFlow, uMaxPt; uniform vec3 uCore,uPink,uLav,uCyan;
     attribute float aU, aSpeed, aSize, aSeed, aArm; attribute vec2 aOff;
     varying vec3 vCol; varying float vA;
     ${GLSL_RIVER}
@@ -206,7 +214,7 @@ const riverMat = new THREE.ShaderMaterial({
       vec4 mv = modelViewMatrix * vec4(p, 1.0);
       gl_Position = projectionMatrix * mv;
       float tw = 0.6 + 0.4 * sin(uTime * (1.2 + aSeed * 3.5) + aSeed * 40.0);
-      gl_PointSize = clamp(aSize * uScale * tw / -mv.z, 0.0, 70.0);
+      gl_PointSize = clamp(aSize * uScale * tw / -mv.z, 0.0, uMaxPt);
       float core = exp(-dot(o, o) * 1.8);
       vec3 edge = aSeed < 0.14 ? uCyan : mix(uPink, uLav, fract(aSeed * 7.13));
       vCol = mix(edge, uCore, core * 0.85);
@@ -215,10 +223,12 @@ const riverMat = new THREE.ShaderMaterial({
     }`,
   fragmentShader: `varying vec3 vCol; varying float vA;
     void main(){ float d = length(gl_PointCoord - 0.5); float a = smoothstep(0.5, 0.05, d); a = a * a;
-      gl_FragColor = vec4(vCol * a * vA, 1.0); }`
+      gl_FragColor = vec4(vCol * a * vA, 1.0);
+      #include <tonemapping_fragment>
+      #include <colorspace_fragment> }`
 });
 {
-  const n = LOW ? 14000 : 30000;
+  const n = LOW ? 9000 : 30000;
   const aU = new Float32Array(n), aSpeed = new Float32Array(n), aSize = new Float32Array(n), aSeed = new Float32Array(n), aArm = new Float32Array(n), aOff = new Float32Array(n * 2);
   for (let i = 0; i < n; i++) {
     aU[i] = rand(); aSpeed[i] = 0.004 + rand() * 0.006; aSeed[i] = rand(); aArm[i] = rand() < 0.28 ? 1 : 0;
@@ -241,13 +251,15 @@ const bokehMat = new THREE.ShaderMaterial({
   vertexShader: `uniform float uTime,uScale; attribute float aSize,aSeed; attribute vec3 aCol; varying vec3 vCol; varying float vA;
     void main(){ vec3 p = position; p.y += sin(uTime * 0.3 + aSeed * 20.0) * 0.25; p.x += cos(uTime * 0.2 + aSeed * 13.0) * 0.3;
       vec4 mv = modelViewMatrix * vec4(p,1.0); gl_Position = projectionMatrix * mv;
-      gl_PointSize = clamp(aSize * uScale / -mv.z, 0.0, 220.0); vCol = aCol;
+      gl_PointSize = clamp(aSize * uScale / -mv.z, 0.0, ${(LOW ? 110 : 220).toFixed(1)}); vCol = aCol;
       vA = smoothstep(0.4, 2.5, -mv.z) * (0.55 + 0.45 * sin(uTime * 0.5 + aSeed * 30.0)); }`,
   fragmentShader: `varying vec3 vCol; varying float vA; void main(){ float d = length(gl_PointCoord - 0.5);
-    float a = smoothstep(0.5, 0.36, d) * 0.55 + smoothstep(0.5, 0.0, d) * 0.45; gl_FragColor = vec4(vCol * a * vA * 0.17, 1.0); }`
+    float a = smoothstep(0.5, 0.36, d) * 0.55 + smoothstep(0.5, 0.0, d) * 0.45; gl_FragColor = vec4(vCol * a * vA * 0.17, 1.0);
+    #include <tonemapping_fragment>
+      #include <colorspace_fragment> }`
 });
 {
-  const n = LOW ? 50 : 100, pos = new Float32Array(n * 3), aS = new Float32Array(n), aSeed = new Float32Array(n), aCol = new Float32Array(n * 3);
+  const n = LOW ? 34 : 100, pos = new Float32Array(n * 3), aS = new Float32Array(n), aSeed = new Float32Array(n), aCol = new Float32Array(n * 3);
   const cols = ['#c9c2ff', '#f3c3da', '#ffffff', '#9fc7ff'].map(lin);
   for (let i = 0; i < n; i++) {
     if (i < n * 0.45) pos.set([(rand() - 0.5) * 22, -3.2 + rand() * 2.6, 4 + rand() * 7.5], i * 3); // hero foreground
@@ -358,7 +370,9 @@ function makeOrb(color, i, isNext) {
         float b = 0.5 + 0.5 * sin(vP.y * 11.0 + uTime * 1.3 + uSeed + sin(vP.x * 7.0 + uTime * 0.8) * 1.6);
         float spec = pow(max(dot(normalize(vN), normalize(vec3(-0.4, 0.7, 0.6))), 0.0), 24.0);
         vec3 col = uColor * (0.22 + 0.3 * b) + uColor * fr * 1.7 + vec3(1.0) * (pow(fr, 5.0) * 0.5 + spec * 0.55);
-        gl_FragColor = vec4(col * uBoost, 1.0); }`
+        gl_FragColor = vec4(col * uBoost, 1.0);
+        #include <tonemapping_fragment>
+      #include <colorspace_fragment> }`
   });
   const core = new THREE.Mesh(orbGeo, mat);
   const halo = new THREE.Sprite(new THREE.SpriteMaterial({ map: haloTex, color: lin(color), blending: THREE.AdditiveBlending, depthWrite: false, transparent: true, opacity: 0.8, fog: false }));
@@ -385,13 +399,17 @@ if (P.showNext) orbs.push(makeOrb('#dfe4ff', courses.length, true));
 /* ------------------------------------------------------------------ */
 /* post-processing                                                     */
 /* ------------------------------------------------------------------ */
-const composer = new EffectComposer(renderer);
-composer.setPixelRatio(DPR);
-composer.setSize(innerWidth, innerHeight);
-composer.addPass(new RenderPass(scene, camera));
-const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), LOW ? 0.7 : 0.85, 0.7, 0.7);
-composer.addPass(bloom);
-composer.addPass(new OutputPass());
+const POST = !LOW && !Q.has('nobloom');
+let composer = null, bloom = null;
+if (POST) {
+  composer = new EffectComposer(renderer);
+  composer.setPixelRatio(DPR);
+  composer.setSize(CW, CH);
+  composer.addPass(new RenderPass(scene, camera));
+  bloom = new UnrealBloomPass(new THREE.Vector2(CW, CH), 0.85, 0.7, 0.7);
+  composer.addPass(bloom);
+  composer.addPass(new OutputPass());
+}
 
 /* ------------------------------------------------------------------ */
 /* camera shots, anchored to scroll                                    */
@@ -414,7 +432,7 @@ function shotFor(name, time) {
     case 'hero': {
       const d = m ? 25 : 17;
       let sy = 0; const el = heroStage();
-      if (el) { const r = el.getBoundingClientRect(); sy = (innerHeight / 2 - (r.top + r.height / 2)) / innerHeight; }
+      if (el) { const r = el.getBoundingClientRect(); sy = (CH / 2 - (r.top + r.height / 2)) / CH; }
       return { pos: V(0, MARK_Y + (m ? 3.6 : 2.6), d), target: V(0, MARK_Y, 0), sx: 0, sy };
     }
     case 'rise': return { pos: V(0, m ? 17 : 12, m ? 20 : 15), target: V(0, -1.2, 0), sx: 0, sy: m ? 0.3 : 0.27 };
@@ -434,10 +452,11 @@ function shotFor(name, time) {
 
 let anchors = [];
 function measure() {
+  const vh = coarse ? CH : innerHeight; // stable on phones, so the URL bar never shifts the anchors
   const maxS = Math.max(0, document.documentElement.scrollHeight - innerHeight);
   anchors = Array.from(document.querySelectorAll('[data-shot]')).map((el) => {
     const r = el.getBoundingClientRect(), top = r.top + SY();
-    const at = Math.min(maxS, Math.max(0, top + r.height / 2 - innerHeight / 2));
+    const at = Math.min(maxS, Math.max(0, top + r.height / 2 - vh / 2));
     return { name: el.dataset.shot, at };
   }).sort((a, b) => a.at - b.at);
 }
@@ -480,7 +499,7 @@ window.addEventListener('pointermove', (e) => {
   ptr.cx = e.clientX; ptr.cy = e.clientY; ptr.over = e.pointerType === 'mouse' && !blocked(e.target);
 }, { passive: true });
 window.addEventListener('click', (e) => {
-  if (blocked(e.target)) return;
+  if (coarse || blocked(e.target)) return;
   const h = pick(e.clientX, e.clientY);
   if (!h) return;
   if (h === 'mark') window.dispatchEvent(new CustomEvent('dl:pick-mark'));
@@ -488,7 +507,7 @@ window.addEventListener('click', (e) => {
 });
 window.addEventListener('dl:pick-mark', () => { const el = document.getElementById('labs'); if (el) el.scrollIntoView({ behavior: 'smooth' }); });
 function pick(x, y) {
-  ndc.set((x / innerWidth) * 2 - 1, -(y / innerHeight) * 2 + 1);
+  ndc.set((x / CW) * 2 - 1, -(y / CH) * 2 + 1);
   ray.setFromCamera(ndc, camera);
   const targets = orbs.filter((o) => !o.isNext).map((o) => o.hit).concat([mark.userData.hit]);
   const hit = ray.intersectObjects(targets, false)[0];
@@ -517,16 +536,34 @@ function updateHover() {
 /* ------------------------------------------------------------------ */
 /* resize + loop                                                       */
 /* ------------------------------------------------------------------ */
-function resize() {
-  const w = innerWidth, h = innerHeight;
-  renderer.setSize(w, h, false); composer.setSize(w, h); bloom.setSize(w, h);
-  camera.aspect = w / h; camera.fov = w / h < 0.8 ? 62 : 50; camera.updateProjectionMatrix();
-  const s = (h * DPR * 0.5) / Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
-  riverMat.uniforms.uScale.value = s; bokehMat.uniforms.uScale.value = s;
-  measure();
+function applySize(force) {
+  const w = innerWidth, lv = Math.max(innerHeight, probe.offsetHeight || 0);
+  // On phones the URL bar changes innerHeight while scrolling; the canvas is sized to the
+  // large viewport, so only a width change (rotation) or a taller viewport needs new buffers.
+  const h = coarse && w === CW && lv <= CH ? CH : lv;
+  if (force || w !== CW || h !== CH) {
+    CW = w; CH = h;
+    renderer.setPixelRatio(DPR); renderer.setSize(w, h, false);
+    if (composer) { composer.setPixelRatio(DPR); composer.setSize(w, h); bloom.setSize(w, h); }
+    camera.aspect = w / h; camera.fov = w / h < 0.8 ? 62 : 50; camera.updateProjectionMatrix();
+    const s = (h * DPR * 0.5) / Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
+    riverMat.uniforms.uScale.value = s; bokehMat.uniforms.uScale.value = s;
+    measure();
+  } else if (!coarse) measure();
 }
-window.addEventListener('resize', resize);
-resize();
+window.addEventListener('resize', () => applySize(false));
+applySize(true);
+
+/* adaptive quality: if frames run slow, lower the pixel ratio a step at a time */
+let perfN = 0, perfT = 0;
+function adapt(dt) {
+  if (document.hidden) return;
+  perfN++; perfT += dt;
+  if (perfN < 90) return;
+  const avg = perfT / perfN; perfN = 0; perfT = 0;
+  const floor = LOW ? 0.75 : 1;
+  if (avg > 1 / 42 && DPR > floor) { DPR = Math.max(floor, DPR - 0.25); applySize(true); }
+}
 
 const clock = new THREE.Clock();
 const t0 = performance.now() / 1000;
@@ -553,7 +590,7 @@ function tick() {
   const px = coarse ? Math.sin(time * 0.23) * 0.5 : ptr.sx, py = coarse ? Math.sin(time * 0.17) * 0.3 : ptr.sy;
   camera.position.copy(cur.pos).addScaledVector(right, px * 0.55).addScaledVector(up, -py * 0.35);
   camera.lookAt(cur.target);
-  const W = innerWidth, H = innerHeight;
+  const W = CW, H = CH;
   if (Math.abs(cur.sx) > 0.001 || Math.abs(cur.sy) > 0.001) camera.setViewOffset(W, H, -cur.sx * W, cur.sy * H, W, H);
   else camera.clearViewOffset();
   sky.position.copy(camera.position);
@@ -603,7 +640,8 @@ function tick() {
   coreGlow.material.opacity = 0.5 + Math.sin(time * 0.6) * 0.06;
 
   if (!coarse && time - lastHover > 0.06) { updateHover(); lastHover = time; }
-  composer.render();
+  if (composer) composer.render(); else renderer.render(scene, camera);
+  if (frame > 30) adapt(dt);
   if (frame === 3) window.dispatchEvent(new CustomEvent('dl:ready'));
   frame++;
   requestAnimationFrame(tick);

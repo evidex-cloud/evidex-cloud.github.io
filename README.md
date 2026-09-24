@@ -20,7 +20,7 @@ Static site, no build step. Three.js 0.170 loads from jsDelivr via the import ma
 ## Add a course
 
 1. Open `courses.js` and copy one object in `courses`.
-2. Change `id`, `color`, `name`, `subject`, `line`, `ask`, `stages / lessons / demos`, `tags`, `keywords`, `url`, `repo`, and optionally `glyph` (24×24 stroke SVG; a droplet is used if omitted).
+2. Change `id`, `color`, `name`, `subject`, `line`, `ask`, `stages / lessons / demos`, `tags`, `keywords`, `url`, and optionally `glyph` (24×24 stroke SVG; a droplet is used if omitted).
 3. Save. The hero headline ("Seven paths…"), totals, search, river orbs, journey cards, grid, marquee, rail and footer all rebuild from the list. Array order is page order.
 
 Set `showNext: false` to hide the "Next path" placeholder orb and card.

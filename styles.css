@@ -24,14 +24,14 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none!important}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:96px;overflow-x:clip;overscroll-behavior-y:none}
 body{
   margin:0; min-height:100%;
   background:
-    radial-gradient(120% 70% at 50% 62%, #6d6fa8 0%, #34407a 28%, #18204a 55%, var(--ink) 100%) fixed,
+    radial-gradient(120% 70% at 50% 62%, #6d6fa8 0%, #34407a 28%, #18204a 55%, var(--ink) 100%),
     var(--ink);
   color:var(--text); font-family:var(--sans); font-size:16px; line-height:1.55;
-  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+  -webkit-font-smoothing:antialiased; overflow-x:clip;
 }
 img{max-width:100%;display:block;height:auto}
 a{color:inherit;text-decoration:none}
@@ -41,8 +41,8 @@ button{font:inherit;color:inherit;cursor:pointer}
 .wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--gut)}
 
 /* ---------- world layers ---------- */
-#world{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
-.scrim{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .9s ease;
+#world{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:0;display:block;pointer-events:none}
+.scrim{position:fixed;left:0;top:0;width:100%;height:100lvh;z-index:1;pointer-events:none;opacity:0;transition:opacity .9s ease;
   background:radial-gradient(90% 80% at 50% 45%, rgba(7,11,28,.42), rgba(7,11,28,.82))}
 main,.foot{position:relative;z-index:2}
 
@@ -63,13 +63,14 @@ body.ready .loader{opacity:0;visibility:hidden}
 
 /* ---------- nav ---------- */
 .nav{position:fixed;z-index:50;left:50%;top:calc(14px + env(safe-area-inset-top,0px));transform:translateX(-50%);
-  width:min(1180px, calc(100% - 2*var(--gut)));height:60px;display:flex;align-items:center;gap:16px;
+  width:min(1180px, calc(100% - 2*var(--gut)));height:68px;display:flex;align-items:center;gap:16px;
   padding:0 10px 0 20px;border-radius:20px;border:1px solid transparent;
   transition:background .5s ease,border-color .5s ease,backdrop-filter .5s ease, transform .6s var(--ease);
   animation:navIn 1.2s var(--ease) .3s both}
 .nav.scrolled{background:rgba(10,14,36,.55);border-color:var(--line);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3)}
 @keyframes navIn{from{opacity:0;transform:translate(-50%,-20px)}}
-.nav-logo img{height:30px;width:auto}
+.nav-logo{display:block;flex:none}
+.nav-logo img{height:42px;width:auto}
 .nav-links{display:flex;gap:6px;margin-inline:auto}
 .nav-links a{padding:8px 14px;border-radius:12px;font-size:.95rem;color:var(--muted);transition:color .2s, background .2s}
 .nav-links a:hover,.nav-links a.on{color:var(--text);background:rgba(255,255,255,.07)}
@@ -302,10 +303,10 @@ body.orb-hover{cursor:pointer}
   .foot-logo{grid-column:1/-1}
 }
 @media (max-width: 760px){
-  .nav{height:56px;padding:0 8px 0 14px;gap:8px}
+  .nav{height:60px;padding:0 8px 0 12px;gap:8px}
   .nav-links{display:none}
   .nav-end{margin-left:auto}
-  .nav-logo img{height:26px}
+  .nav-logo img{height:34px}
   .nav-cta span{display:none}
   .nav-cta{width:40px;padding:0;justify-content:center}
   .hero{padding-top:96px;padding-bottom:110px}
@@ -329,4 +330,22 @@ body.orb-hover{cursor:pointer}
   .labs-sec{align-items:flex-end;min-height:120vh;padding-bottom:10vh}
   .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
+}
+
+/* ---------- touch devices: keep scrolling light ----------
+   Backdrop blur over a live WebGL canvas re-blurs every frame, and blur filters in
+   scroll transitions are costly on phones, so touch devices get solid glass instead. */
+@media (pointer: coarse), (max-width: 760px){
+  .glass,.chip,.marquee,.nav.scrolled,.orb-tip{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .glass{background:rgba(16,22,56,.82)}
+  .seek{background:rgba(16,22,56,.72)}
+  .chip{background:rgba(10,14,36,.7)}
+  .marquee{background:rgba(7,11,28,.7)}
+  .nav.scrolled{background:rgba(10,14,36,.9)}
+  .reveal,.step-card{filter:none!important;will-change:auto}
+  .step-card{transform:translateY(40px)}
+  .hero-title .w{filter:none}
+  .pcard::before{animation:none;filter:none}
+  .seek::before{animation-duration:10s}
+  .marquee-track{animation-duration:90s}
 }

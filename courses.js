@@ -7,7 +7,6 @@
 window.PATHS = {
   site: {
     home: 'https://dropletlabs.xyz/',
-    github: 'https://github.com/evidex-cloud',
     email: 'support@dropletlabs.xyz'
   },
 
@@ -29,7 +28,6 @@ window.PATHS = {
       tags: { en: ['SHA-256', 'ECDSA', 'Mining', 'Lightning'], zh: ['SHA-256', 'ECDSA', '挖矿', '闪电网络'] },
       keywords: 'bitcoin btc satoshi hash sha ecdsa signature mining node lightning utxo transaction 比特币 聪 挖矿 节点 交易 闪电',
       url: 'https://evidex-cloud.github.io/nextdawn-satoshi-path/',
-      repo: 'https://github.com/evidex-cloud/nextdawn-satoshi-path',
       glyph: '<path d="M8.5 5v14M8.5 5h5a3.25 3.25 0 0 1 0 6.5h-5M8.5 11.5h6a3.75 3.75 0 0 1 0 7.5h-6M10.5 2.8V5M13.5 2.8V5M10.5 19v2.2M13.5 19v2.2M6.5 5h2M6.5 19h2"/>'
     },
     {
@@ -46,7 +44,6 @@ window.PATHS = {
       tags: { en: ['Subjective value', 'Money', 'Business cycles', 'Network effects'], zh: ['主观价值', '货币', '商业周期', '网络效应'] },
       keywords: 'austrian economics mises hayek value money price business cycle inflation human action network 奥派 经济 米塞斯 哈耶克 货币 周期 通胀 价值',
       url: 'https://evidex-cloud.github.io/droplet-labs-austrian-path/',
-      repo: 'https://github.com/evidex-cloud/droplet-labs-austrian-path',
       glyph: '<path d="M6.5 3h11M6.5 21h11M8 3v2.2a4 4 0 0 0 1.7 3.3L12 12l2.3 3.5A4 4 0 0 1 16 18.8V21M16 3v2.2a4 4 0 0 1-1.7 3.3L12 12l-2.3 3.5A4 4 0 0 0 8 18.8V21M10 18.5h4"/>'
     },
     {
@@ -63,7 +60,6 @@ window.PATHS = {
       tags: { en: ['Nash equilibrium', 'Auctions', 'Mechanism design', 'Behavioral'], zh: ['纳什均衡', '拍卖', '机制设计', '行为经济学'] },
       keywords: 'game theory strategy nash equilibrium prisoner dilemma auction mechanism design incentive behavioral platform 博弈 纳什 囚徒 拍卖 机制 激励 行为',
       url: 'https://evidex-cloud.github.io/droplet-labs-strategy-path/',
-      repo: 'https://github.com/evidex-cloud/droplet-labs-strategy-path',
       glyph: '<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 3.5v17M3.5 12h17"/><circle cx="16.25" cy="16.25" r="1.6" fill="currentColor" stroke="none"/>'
     },
     {
@@ -80,7 +76,6 @@ window.PATHS = {
       tags: { en: ['Greeks', 'Black–Scholes', 'Spreads', 'Perpetuals'], zh: ['希腊字母', 'Black–Scholes', '价差组合', '永续合约'] },
       keywords: 'options call put greeks delta gamma theta vega black scholes volatility spread straddle perpetual perps futures python 期权 希腊 波动率 永续 期货 定价',
       url: 'https://evidex-cloud.github.io/droplet-labs-options-path/',
-      repo: 'https://github.com/evidex-cloud/droplet-labs-options-path',
       glyph: '<path d="M3.5 3.5v17h17"/><path d="M5.5 15.5h6.5l7.5-9"/><path d="M5.5 11.5h14" stroke-dasharray="1.5 2.5"/>'
     },
     {
@@ -97,7 +92,6 @@ window.PATHS = {
       tags: { en: ['ERC-3643', 'SPV', 'Proof of reserve', 'Regulation'], zh: ['ERC-3643', 'SPV', '储备证明', '监管'] },
       keywords: 'rwa real world asset tokenization token treasury bond spv nav oracle proof of reserve erc-3643 regulation compliance 现实资产 代币化 国债 预言机 储备 监管 合规',
       url: 'https://evidex-cloud.github.io/droplet-labs-rwa-path/',
-      repo: 'https://github.com/evidex-cloud/droplet-labs-rwa-path',
       glyph: '<path d="M3 9.5 12 4l9 5.5M4.5 20.5h15M6 10.5v7M10 10.5v7M14 10.5v7M18 10.5v7M3.5 20.5h17"/>'
     },
     {
@@ -114,7 +108,6 @@ window.PATHS = {
       tags: { en: ['MCP', 'x402', 'AP2', 'ERC-8004'], zh: ['MCP', 'x402', 'AP2', 'ERC-8004'] },
       keywords: 'ai agent agents llm mcp a2a x402 ap2 erc-8004 marketplace payments identity crypto protocol 智能体 代理 协议 支付 身份 市场',
       url: 'https://evidex-cloud.github.io/droplet-labs-agent-path/',
-      repo: 'https://github.com/evidex-cloud/droplet-labs-agent-path',
       glyph: '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><path d="M12 7.2V11.6M6.7 17.1l4.1-3.1M17.3 17.1l-4.1-3.1M7.2 18.5h9.6"/>'
     }
   ]
@@ -138,7 +131,7 @@ window.COPY = {
       title: 'Follow the river.',
       sub: 'Each path is one line from first intuition to expert craft. Scroll to travel from droplet to droplet.'
     },
-    step: { stages: 'Stages', lessons: 'Lessons', demos: 'Demos', start: 'Start the path', source: 'Source' },
+    step: { stages: 'Stages', lessons: 'Lessons', demos: 'Demos', start: 'Start the path' },
     grid: {
       eyebrow: 'Every path',
       title: 'Pick any path.',
@@ -164,7 +157,7 @@ window.COPY = {
       cta: 'Visit dropletlabs.xyz',
       mail: 'Write to us'
     },
-    foot: { paths: 'Paths', labs: 'Droplet Labs', site: 'Website', github: 'GitHub', note: 'For education only. Not investment advice.', top: 'Back to top' },
+    foot: { paths: 'Paths', labs: 'Droplet Labs', site: 'Website', note: 'For education only. Not investment advice.', top: 'Back to top' },
     orb: 'Click to travel'
   },
   zh: {
@@ -183,7 +176,7 @@ window.COPY = {
       title: '顺流而下。',
       sub: '每条路都是一条主线，从第一直觉走到专家手艺。向下滚动，从一滴水走到下一滴。'
     },
-    step: { stages: '阶段', lessons: '课', demos: '演示', start: '开始学习', source: '源码' },
+    step: { stages: '阶段', lessons: '课', demos: '演示', start: '开始学习' },
     grid: {
       eyebrow: '全部课程',
       title: '任选一条路。',
@@ -209,7 +202,7 @@ window.COPY = {
       cta: '访问 dropletlabs.xyz',
       mail: '联系我们'
     },
-    foot: { paths: '课程', labs: 'Droplet Labs', site: '官网', github: 'GitHub', note: '仅供教育，不构成投资建议。', top: '回到顶部' },
+    foot: { paths: '课程', labs: 'Droplet Labs', site: '官网', note: '仅供教育，不构成投资建议。', top: '回到顶部' },
     orb: '点击前往'
   }
 };

@@ -79,7 +79,6 @@
           '<ul class="tags">' + L(c.tags).map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul>' +
           '<div class="step-actions">' +
             '<a class="btn btn-c" href="' + c.url + '" target="_blank" rel="noopener"><span>' + T('step.start') + '</span>' + ARROW + '</a>' +
-            (c.repo ? '<a class="btn btn-ghost" href="' + c.repo + '" target="_blank" rel="noopener"><span>' + T('step.source') + '</span>' + ARROW + '</a>' : '') +
           '</div>' +
         '</article></section>';
     }).join('');
@@ -157,7 +156,6 @@
       return '<li><a href="' + c.url + '" target="_blank" rel="noopener" style="--c:' + c.color + '"><i></i>' + esc(L(c.name)) + '</a></li>';
     }).join('');
     $$('[data-home]').forEach(function (a) { a.href = P.site.home; });
-    $('#ghLink').href = P.site.github;
     $('#mailBtn').href = $('#footMail').href = 'mailto:' + P.site.email;
     $('#footMail').textContent = $('#mailLine').textContent = P.site.email;
   }
@@ -176,7 +174,7 @@
 
   function renderAll() {
     renderText(); renderHero(); renderSteps(); renderMarquee(); renderCards(); renderStats(); renderHow(); renderFooter();
-    observeReveals(); restartTyping();
+    observeReveals(); restartTyping(); scrimEls = null;
     window.dispatchEvent(new CustomEvent('dl:layout'));
   }
 
@@ -297,17 +295,18 @@
   }
 
   /* ---------- scroll state: nav, scrim, rail ---------- */
-  var nav = $('#nav'), scrim = $('#scrim'), rail = $('#rail'), ticking = false;
+  var nav = $('#nav'), scrim = $('#scrim'), rail = $('#rail'), ticking = false, scrimEls = null;
   function onScroll() {
     ticking = false;
     nav.classList.toggle('scrolled', scrollY > 30);
     var mid = innerHeight / 2, scr = 0, railId = null;
-    $$('[data-scrim]').forEach(function (s) {
+    if (!scrimEls) scrimEls = $$('[data-scrim]');
+    scrimEls.forEach(function (s) {
       var r = s.getBoundingClientRect();
       if (r.top <= mid && r.bottom > mid) { scr = +s.dataset.scrim; if (s.dataset.rail) railId = s.dataset.rail; }
     });
     var foot = $('.foot').getBoundingClientRect(); if (foot.top < mid) scr = 1;
-    scrim.style.opacity = scr;
+    if (scrim.style.opacity !== String(scr)) scrim.style.opacity = scr;
     rail.classList.toggle('on', !!railId);
     $$('a', rail).forEach(function (a) { a.classList.toggle('on', a.dataset.id === railId); });
     var secs = ['river', 'how', 'labs'], cur = null;
