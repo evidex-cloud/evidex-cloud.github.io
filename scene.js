@@ -30,7 +30,7 @@ const probe = document.createElement('div');
 probe.style.cssText = 'position:fixed;left:0;top:0;width:1px;height:100vh;height:100lvh;visibility:hidden;pointer-events:none';
 document.body.appendChild(probe);
 let CW = innerWidth, CH = Math.max(innerHeight, probe.offsetHeight || 0);
-let DPR = Math.min(devicePixelRatio || 1, LOW ? 1.5 : 1.75);
+const DPR = Math.min(devicePixelRatio || 1, LOW ? 1.5 : 1.75);
 renderer.setPixelRatio(DPR);
 renderer.setSize(CW, CH, false);
 renderer.toneMapping = THREE.NeutralToneMapping;
@@ -169,7 +169,7 @@ const clouds = new THREE.Group(); scene.add(clouds);
     }
     const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; return t;
   });
-  const n = LOW ? 30 : 110, lav = lin('#4f63a6'), pink = lin('#8a74a8'), deep = lin('#26336e');
+  const n = LOW ? 55 : 110, lav = lin('#4f63a6'), pink = lin('#8a74a8'), deep = lin('#26336e');
   for (let i = 0; i < n; i++) {
     const r = 5 + Math.pow(rand(), 0.75) * 60, th = rand() * Math.PI * 2;
     const col = lav.clone().lerp(rand() < 0.35 ? pink : deep, rand() * 0.8);
@@ -195,7 +195,7 @@ band.scale.set(90, 16, 1); band.position.set(0, -2.2, -30); scene.add(band);
 const riverMat = new THREE.ShaderMaterial({
   transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
   uniforms: {
-    uTime: { value: 0 }, uScale: { value: 1 }, uFlow: { value: 1 }, uMaxPt: { value: LOW ? 36 : 70 },
+    uTime: { value: 0 }, uScale: { value: 1 }, uFlow: { value: 1 }, uMaxPt: { value: 70 },
     uCore: { value: lin('#fff2e6') }, uPink: { value: lin('#f5bcd6') }, uLav: { value: lin('#a8b6ff') }, uCyan: { value: lin('#7fe6ff') }
   },
   vertexShader: `
@@ -228,7 +228,7 @@ const riverMat = new THREE.ShaderMaterial({
       #include <colorspace_fragment> }`
 });
 {
-  const n = LOW ? 9000 : 30000;
+  const n = LOW ? 14000 : 30000;
   const aU = new Float32Array(n), aSpeed = new Float32Array(n), aSize = new Float32Array(n), aSeed = new Float32Array(n), aArm = new Float32Array(n), aOff = new Float32Array(n * 2);
   for (let i = 0; i < n; i++) {
     aU[i] = rand(); aSpeed[i] = 0.004 + rand() * 0.006; aSeed[i] = rand(); aArm[i] = rand() < 0.28 ? 1 : 0;
@@ -251,7 +251,7 @@ const bokehMat = new THREE.ShaderMaterial({
   vertexShader: `uniform float uTime,uScale; attribute float aSize,aSeed; attribute vec3 aCol; varying vec3 vCol; varying float vA;
     void main(){ vec3 p = position; p.y += sin(uTime * 0.3 + aSeed * 20.0) * 0.25; p.x += cos(uTime * 0.2 + aSeed * 13.0) * 0.3;
       vec4 mv = modelViewMatrix * vec4(p,1.0); gl_Position = projectionMatrix * mv;
-      gl_PointSize = clamp(aSize * uScale / -mv.z, 0.0, ${(LOW ? 110 : 220).toFixed(1)}); vCol = aCol;
+      gl_PointSize = clamp(aSize * uScale / -mv.z, 0.0, 220.0); vCol = aCol;
       vA = smoothstep(0.4, 2.5, -mv.z) * (0.55 + 0.45 * sin(uTime * 0.5 + aSeed * 30.0)); }`,
   fragmentShader: `varying vec3 vCol; varying float vA; void main(){ float d = length(gl_PointCoord - 0.5);
     float a = smoothstep(0.5, 0.36, d) * 0.55 + smoothstep(0.5, 0.0, d) * 0.45; gl_FragColor = vec4(vCol * a * vA * 0.17, 1.0);
@@ -259,7 +259,7 @@ const bokehMat = new THREE.ShaderMaterial({
       #include <colorspace_fragment> }`
 });
 {
-  const n = LOW ? 34 : 100, pos = new Float32Array(n * 3), aS = new Float32Array(n), aSeed = new Float32Array(n), aCol = new Float32Array(n * 3);
+  const n = LOW ? 50 : 100, pos = new Float32Array(n * 3), aS = new Float32Array(n), aSeed = new Float32Array(n), aCol = new Float32Array(n * 3);
   const cols = ['#c9c2ff', '#f3c3da', '#ffffff', '#9fc7ff'].map(lin);
   for (let i = 0; i < n; i++) {
     if (i < n * 0.45) pos.set([(rand() - 0.5) * 22, -3.2 + rand() * 2.6, 4 + rand() * 7.5], i * 3); // hero foreground
@@ -399,14 +399,14 @@ if (P.showNext) orbs.push(makeOrb('#dfe4ff', courses.length, true));
 /* ------------------------------------------------------------------ */
 /* post-processing                                                     */
 /* ------------------------------------------------------------------ */
-const POST = !LOW && !Q.has('nobloom');
+const POST = !Q.has('nobloom');
 let composer = null, bloom = null;
 if (POST) {
   composer = new EffectComposer(renderer);
   composer.setPixelRatio(DPR);
   composer.setSize(CW, CH);
   composer.addPass(new RenderPass(scene, camera));
-  bloom = new UnrealBloomPass(new THREE.Vector2(CW, CH), 0.85, 0.7, 0.7);
+  bloom = new UnrealBloomPass(new THREE.Vector2(CW, CH), LOW ? 0.7 : 0.85, 0.7, 0.7);
   composer.addPass(bloom);
   composer.addPass(new OutputPass());
 }
@@ -554,16 +554,6 @@ function applySize(force) {
 window.addEventListener('resize', () => applySize(false));
 applySize(true);
 
-/* adaptive quality: if frames run slow, lower the pixel ratio a step at a time */
-let perfN = 0, perfT = 0;
-function adapt(dt) {
-  if (document.hidden) return;
-  perfN++; perfT += dt;
-  if (perfN < 90) return;
-  const avg = perfT / perfN; perfN = 0; perfT = 0;
-  const floor = LOW ? 0.75 : 1;
-  if (avg > 1 / 42 && DPR > floor) { DPR = Math.max(floor, DPR - 0.25); applySize(true); }
-}
 
 const clock = new THREE.Clock();
 const t0 = performance.now() / 1000;
@@ -641,7 +631,6 @@ function tick() {
 
   if (!coarse && time - lastHover > 0.06) { updateHover(); lastHover = time; }
   if (composer) composer.render(); else renderer.render(scene, camera);
-  if (frame > 30) adapt(dt);
   if (frame === 3) window.dispatchEvent(new CustomEvent('dl:ready'));
   frame++;
   requestAnimationFrame(tick);

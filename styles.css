@@ -331,21 +331,3 @@ body.orb-hover{cursor:pointer}
   .foot-grid{grid-template-columns:1fr 1fr;gap:28px}
   .foot-bottom{flex-direction:column;align-items:flex-start}
 }
-
-/* ---------- touch devices: keep scrolling light ----------
-   Backdrop blur over a live WebGL canvas re-blurs every frame, and blur filters in
-   scroll transitions are costly on phones, so touch devices get solid glass instead. */
-@media (pointer: coarse), (max-width: 760px){
-  .glass,.chip,.marquee,.nav.scrolled,.orb-tip{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-  .glass{background:rgba(16,22,56,.82)}
-  .seek{background:rgba(16,22,56,.72)}
-  .chip{background:rgba(10,14,36,.7)}
-  .marquee{background:rgba(7,11,28,.7)}
-  .nav.scrolled{background:rgba(10,14,36,.9)}
-  .reveal,.step-card{filter:none!important;will-change:auto}
-  .step-card{transform:translateY(40px)}
-  .hero-title .w{filter:none}
-  .pcard::before{animation:none;filter:none}
-  .seek::before{animation-duration:10s}
-  .marquee-track{animation-duration:90s}
-}
