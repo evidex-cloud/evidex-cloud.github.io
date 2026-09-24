@@ -1,5 +1,7 @@
 # Droplet Labs · Paths
 
+> 🔗 **Live** — <https://evidex-cloud.github.io/>
+
 The landing page for every Droplet Labs course. A single Three.js scene sits behind the page: a night sky over a sea of clouds, a river of stardust spiralling out of the 3D Droplet mark, and one glowing orb per course riding that river. Scrolling moves the camera from shot to shot.
 
 Static site, no build step. Three.js 0.170 loads from jsDelivr via the import map in `index.html`.
