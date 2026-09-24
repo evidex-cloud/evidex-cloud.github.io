@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Droplet Labs Paths</title>
+<meta name="description" content="Free, bilingual, interactive courses from Droplet Labs: Bitcoin, Austrian economics, game theory, options, real-world assets and AI agents.">
+<meta name="theme-color" content="#070B1C">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+</head>
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <svg class="loader-mark" viewBox="88 47 336 386"><path class="lm-drop" d="M256 55 L356.8 155.2 A142.5 142.5 0 1 1 155.2 155.2 Z"/><path class="lm-x" d="M127.5 136.5 L383.5 392.5 M383.5 136.5 L127.5 392.5"/><g class="lm-n"><circle cx="127.5" cy="136.5" r="31.5"/><circle cx="383.5" cy="136.5" r="31.5"/><circle cx="127.5" cy="392.5" r="31.5"/><circle cx="383.5" cy="392.5" r="31.5"/></g></svg>
+</div>
+
+<canvas id="world" aria-hidden="true"></canvas>
+<div class="scrim" id="scrim" aria-hidden="true"></div>
+<div class="orb-tip" id="orbTip" hidden></div>
+
+<header class="nav" id="nav">
+  <a class="nav-logo" href="#top" aria-label="Droplet Labs Paths, back to top"><img src="assets/logo-horizontal-dark-t.png" alt="Droplet Labs" width="1422" height="314"></a>
+  <nav class="nav-links" aria-label="Sections">
+    <a href="#river" data-t="nav.paths">Paths</a>
+    <a href="#how" data-t="nav.how">How it works</a>
+    <a href="#labs" data-t="nav.labs">Droplet Labs</a>
+  </nav>
+  <div class="nav-end">
+    <button class="lang" type="button" id="langBtn" aria-label="Switch language">中文</button>
+    <a class="btn btn-white nav-cta" data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener"><span data-t="nav.visit">Visit Droplet Labs</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" data-shot="hero" data-scrim="0">
+    <div class="hero-inner">
+      <div class="hero-stage" aria-hidden="true"></div>
+      <p class="chip hero-kicker" id="heroKicker"></p>
+      <h1 class="hero-title" id="heroTitle"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+
+      <form class="seek glass" id="seek" autocomplete="off" role="search">
+        <label class="sr" for="seekInput" data-t="hero.search">Search</label>
+        <div class="seek-field">
+          <input id="seekInput" type="text" spellcheck="false">
+          <span class="seek-ph" id="seekPh" aria-hidden="true"></span>
+        </div>
+        <div class="seek-row">
+          <div class="seek-chips" id="seekChips"></div>
+          <button class="seek-go" type="submit" id="seekGo" aria-label="Find my path"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></button>
+        </div>
+        <p class="seek-msg" id="seekMsg" hidden></p>
+      </form>
+    </div>
+    <a class="scroll-cue" href="#river"><span data-t="hero.scroll">Scroll to follow the river</span><i></i></a>
+  </section>
+
+  <!-- RIVER JOURNEY -->
+  <section class="river" id="river">
+    <header class="river-head" data-shot="rise" data-scrim="0">
+      <p class="eyebrow reveal" data-t="river.eyebrow">The paths</p>
+      <h2 class="display reveal" data-t="river.title">Follow the river.</h2>
+      <p class="lede reveal" data-t="river.sub"></p>
+    </header>
+    <div id="steps"></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <!-- GRID -->
+  <section class="grid-sec" id="all" data-shot="overview" data-scrim="1">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow reveal" data-t="grid.eyebrow">Every path</p>
+        <h2 class="display reveal" data-t="grid.title">Pick any path.</h2>
+        <p class="lede reveal" data-t="grid.sub"></p>
+      </header>
+      <div class="cards" id="cards"></div>
+    </div>
+  </section>
+
+  <!-- NUMBERS -->
+  <section class="stats-sec" data-shot="orbit" data-scrim="1">
+    <div class="wrap"><div class="stats" id="stats"></div></div>
+  </section>
+
+  <!-- HOW -->
+  <section class="how-sec" id="how" data-shot="orbit2" data-scrim="1">
+    <div class="wrap">
+      <header class="sec-head">
+        <p class="eyebrow reveal" data-t="how.eyebrow">How it works</p>
+        <h2 class="display reveal" data-t="how.title">How every path works.</h2>
+      </header>
+      <div class="how" id="howList"></div>
+    </div>
+  </section>
+
+  <!-- LABS -->
+  <section class="labs-sec" id="labs" data-shot="labs" data-scrim="0">
+    <div class="wrap labs">
+      <div class="labs-copy">
+        <p class="eyebrow reveal" data-t="labs.eyebrow">Made by Droplet Labs</p>
+        <h2 class="display big reveal" data-t="labs.title">An ocean is made of countless droplets.</h2>
+        <p class="lede reveal" data-t="labs.sub"></p>
+        <div class="labs-actions reveal">
+          <a class="btn btn-white btn-lg" data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener"><span data-t="labs.cta">Visit dropletlabs.xyz</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+          <a class="btn btn-ghost btn-lg" id="mailBtn" href="mailto:support@dropletlabs.xyz"><span data-t="labs.mail">Write to us</span></a>
+        </div>
+        <p class="mail-line reveal" id="mailLine">support@dropletlabs.xyz</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <a class="foot-logo" data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener"><img src="assets/logo-stacked-dark-t.png" alt="Droplet Labs" width="1005" height="405"></a>
+    <div class="foot-col">
+      <p class="foot-h" data-t="foot.paths">Paths</p>
+      <ul id="footPaths"></ul>
+    </div>
+    <div class="foot-col">
+      <p class="foot-h" data-t="foot.labs">Droplet Labs</p>
+      <ul>
+        <li><a data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener" data-t="foot.site">Website</a></li>
+        <li><a id="ghLink" href="https://github.com/evidex-cloud" target="_blank" rel="noopener" data-t="foot.github">GitHub</a></li>
+        <li><a id="footMail" href="mailto:support@dropletlabs.xyz">support@dropletlabs.xyz</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© Droplet Labs</span>
+    <span data-t="foot.note">For education only. Not investment advice.</span>
+    <span class="foot-end">
+      <button class="lang" type="button" id="langBtn2">中文</button>
+      <a href="#top" data-t="foot.top">Back to top</a>
+    </span>
+  </div>
+</footer>
+
+<nav class="rail" id="rail" aria-label="Paths"></nav>
+
+<script src="courses.js?v=2"></script>
+<script src="main.js?v=2"></script>
+<script type="module" src="scene.js?v=2"></script>
+</body>
+</html>
