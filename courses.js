@@ -31,6 +31,22 @@ window.PATHS = {
       glyph: '<path d="M8.5 5v14M8.5 5h5a3.25 3.25 0 0 1 0 6.5h-5M8.5 11.5h6a3.75 3.75 0 0 1 0 7.5h-6M10.5 2.8V5M13.5 2.8V5M10.5 19v2.2M13.5 19v2.2M6.5 5h2M6.5 19h2"/>'
     },
     {
+      id: 'finance',
+      color: '#8FE070',
+      name: { en: 'New Finance Path', zh: '新金融之路' },
+      subject: { en: 'New-era finance', zh: '新金融' },
+      line: {
+        en: 'The whole picture, from zero: bonds and stocks, Bitcoin, DeFi, tokenization, and the treasury companies behind MSTR and ASST.',
+        zh: '从零看懂全景：债券与股票、比特币、DeFi、代币化，以及 MSTR、ASST 背后的数字资产财库公司。'
+      },
+      ask: { en: 'Read MSTR’s preferreds like an analyst', zh: '像分析师一样看懂 MSTR 优先股' },
+      stages: 22, lessons: 115, demos: 115,
+      tags: { en: ['30-year yield', 'DeFi', 'mNAV', 'BTC Rating'], zh: ['30 年期国债', 'DeFi', 'mNAV', 'BTC 评级'] },
+      keywords: 'finance economy bond bonds yield treasury 30-year stock stocks equity capital stack preferred convertible defi stablecoin tokenization dat treasury company mstr strategy strive asst mnav btc rating strc sata macro fed inflation ai 金融 经济 债券 收益率 国债 股票 优先股 可转债 稳定币 代币化 财库 微策略 宏观 美联储 通胀',
+      url: 'https://evidex-cloud.github.io/droplet-labs-finance-path/',
+      glyph: '<rect x="3.5" y="15.5" width="17" height="4.5" rx="1.2"/><rect x="6" y="9.75" width="12" height="4" rx="1.2"/><rect x="8.5" y="4" width="7" height="4" rx="1.2"/>'
+    },
+    {
       id: 'austrian',
       color: '#F2C14E',
       name: { en: 'Austrian Path', zh: '奥派之路' },
@@ -120,7 +136,7 @@ window.COPY = {
     hero: {
       kicker: '{count} free courses · {lessons} lessons · EN / 中文',
       title: '{N} paths into *the new economy.*',
-      sub: 'Free, bilingual, hands-on courses from Droplet Labs. Money, markets, strategy, assets and AI agents, taken from zero to deep.',
+      sub: 'Free, bilingual, hands-on courses from Droplet Labs. Money, finance, markets, strategy, assets and AI agents, taken from zero to deep.',
       search: 'Search',
       go: 'Find my path',
       noMatch: 'No path matches yet. Try "bitcoin", "auction" or "agents".',
@@ -165,7 +181,7 @@ window.COPY = {
     hero: {
       kicker: '{count} 门免费课程 · {lessons} 节课 · 中文 / EN',
       title: '{N}条路，*通往新经济。*',
-      sub: 'Droplet Labs 出品的免费、双语、可动手的课程。货币、市场、博弈、资产与 AI 智能体，从零走到深处。',
+      sub: 'Droplet Labs 出品的免费、双语、可动手的课程。货币、金融、市场、博弈、资产与 AI 智能体，从零走到深处。',
       search: '搜索',
       go: '找到我的路',
       noMatch: '暂时没有匹配的课程。试试「比特币」「拍卖」或「智能体」。',
