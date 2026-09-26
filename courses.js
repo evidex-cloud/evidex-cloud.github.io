@@ -84,13 +84,13 @@ window.PATHS = {
       name: { en: 'Options Path', zh: '期权之路' },
       subject: { en: 'Options & perpetuals', zh: '期权与永续合约' },
       line: {
-        en: 'From zero to the Greeks, spread design, Python pricing, and telling perps from futures.',
-        zh: '从零到看懂希腊字母、设计组合策略、用 Python 定价回测，并分清永续与期货。'
+        en: 'From payoff shapes to Black-Scholes, volatility and the Greeks, strategies and risk — plus 0DTE, crypto options, perps and AI.',
+        zh: '从损益形状到 Black-Scholes、波动率与希腊字母、策略与风险管理，再到 0DTE、加密期权、永续与 AI。'
       },
       ask: { en: 'Price an option by hand', zh: '亲手给一张期权定价' },
-      stages: 13, lessons: 79, demos: 79,
-      tags: { en: ['Greeks', 'Black–Scholes', 'Spreads', 'Perpetuals'], zh: ['希腊字母', 'Black–Scholes', '价差组合', '永续合约'] },
-      keywords: 'options call put greeks delta gamma theta vega black scholes volatility spread straddle perpetual perps futures python 期权 希腊 波动率 永续 期货 定价',
+      stages: 17, lessons: 99, demos: 207,
+      tags: { en: ['Greeks', 'Black–Scholes', 'Volatility', 'Perpetuals'], zh: ['希腊字母', 'Black–Scholes', '波动率', '永续合约'] },
+      keywords: 'options call put greeks delta gamma theta vega black scholes volatility smile skew vix 0dte spread straddle iron condor perpetual perps futures funding python deep hedging 期权 希腊 波动率 永续 期货 定价 0DTE',
       url: 'https://evidex-cloud.github.io/droplet-labs-options-path/',
       glyph: '<path d="M3.5 3.5v17h17"/><path d="M5.5 15.5h6.5l7.5-9"/><path d="M5.5 11.5h14" stroke-dasharray="1.5 2.5"/>'
     },
