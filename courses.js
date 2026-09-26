@@ -104,7 +104,7 @@ window.PATHS = {
         zh: '把现实世界上链：SPV、NAV 预言机、储备证明、全球监管，并亲手设计一个项目。'
       },
       ask: { en: 'Tokenize a real-world asset', zh: '把一项现实资产代币化' },
-      stages: 15, lessons: 65, demos: 65,
+      stages: 15, lessons: 66, demos: 66,
       tags: { en: ['ERC-3643', 'SPV', 'Proof of reserve', 'Regulation'], zh: ['ERC-3643', 'SPV', '储备证明', '监管'] },
       keywords: 'rwa real world asset tokenization token treasury bond spv nav oracle proof of reserve erc-3643 regulation compliance 现实资产 代币化 国债 预言机 储备 监管 合规',
       url: 'https://evidex-cloud.github.io/droplet-labs-rwa-path/',
