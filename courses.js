@@ -20,13 +20,13 @@ window.PATHS = {
       name: { en: 'Satoshi Path', zh: '聪之路' },
       subject: { en: 'Bitcoin', zh: '比特币' },
       line: {
-        en: 'From zero to running a node, reading the source, and building a transaction by hand.',
-        zh: '从零到能跑节点、读源码，亲手用代码构造一笔交易。'
+        en: 'Follow one real payment through every layer, from zero to reading raw bytes, running a node and signing a transaction in code.',
+        zh: '跟着一笔真实的付款穿过每一层：从零到读懂原始字节、跑自己的节点、用代码亲手签名一笔交易。'
       },
       ask: { en: 'Understand Bitcoin from first principles', zh: '从第一性原理看懂比特币' },
-      stages: 11, lessons: 54, demos: 49,
-      tags: { en: ['SHA-256', 'ECDSA', 'Mining', 'Lightning'], zh: ['SHA-256', 'ECDSA', '挖矿', '闪电网络'] },
-      keywords: 'bitcoin btc satoshi hash sha ecdsa signature mining node lightning utxo transaction 比特币 聪 挖矿 节点 交易 闪电',
+      stages: 13, lessons: 68, demos: 167,
+      tags: { en: ['secp256k1', 'Proof of work', 'Taproot', 'Lightning'], zh: ['secp256k1', '工作量证明', 'Taproot', '闪电网络'] },
+      keywords: 'bitcoin btc satoshi hash sha ecdsa schnorr secp256k1 elliptic curve signature mining proof of work difficulty node mempool utxo transaction script taproot segwit wallet bip39 hd psbt multisig lightning privacy covenant quantum 比特币 聪 哈希 椭圆曲线 签名 挖矿 工作量证明 难度 节点 交易 脚本 钱包 助记词 多签 闪电 隐私 量子',
       url: 'https://evidex-cloud.github.io/nextdawn-satoshi-path/',
       glyph: '<path d="M8.5 5v14M8.5 5h5a3.25 3.25 0 0 1 0 6.5h-5M8.5 11.5h6a3.75 3.75 0 0 1 0 7.5h-6M10.5 2.8V5M13.5 2.8V5M10.5 19v2.2M13.5 19v2.2M6.5 5h2M6.5 19h2"/>'
     },
