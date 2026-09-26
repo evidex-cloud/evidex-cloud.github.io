@@ -114,15 +114,15 @@ window.PATHS = {
       id: 'agent',
       color: '#A393FF',
       name: { en: 'Agent Path', zh: '智能体之路' },
-      subject: { en: 'AI agents × crypto', zh: 'AI 智能体 × 加密' },
+      subject: { en: 'Crypto × agentic AI', zh: 'AI 智能体 × 加密' },
       line: {
-        en: 'Every layer behind an AI-agent marketplace, where AI meets crypto, from protocols to payments.',
-        zh: '拆开 AI 智能体市场的每一层：AI 与加密的交汇处，从协议到支付。'
+        en: 'How agents think and act, and how crypto gives them keys, money, identity and verifiable trust. Then design the whole system.',
+        zh: '智能体怎样思考和行动，加密怎样给它钥匙、钱、身份与可验证的信任——最后亲手设计整个系统。'
       },
-      ask: { en: 'Build for the agent economy', zh: '为智能体经济而构建' },
-      stages: 14, lessons: 68, demos: 68,
-      tags: { en: ['MCP', 'x402', 'AP2', 'ERC-8004'], zh: ['MCP', 'x402', 'AP2', 'ERC-8004'] },
-      keywords: 'ai agent agents llm mcp a2a x402 ap2 erc-8004 marketplace payments identity crypto protocol 智能体 代理 协议 支付 身份 市场',
+      ask: { en: 'Design for the agent economy', zh: '为智能体经济做设计' },
+      stages: 17, lessons: 90, demos: 205,
+      tags: { en: ['LLMs & agents', 'MCP · x402', 'ERC-8004', 'TEE · ZK'], zh: ['大模型与智能体', 'MCP · x402', 'ERC-8004', 'TEE · ZK'] },
+      keywords: 'ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计',
       url: 'https://evidex-cloud.github.io/droplet-labs-agent-path/',
       glyph: '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><path d="M12 7.2V11.6M6.7 17.1l4.1-3.1M17.3 17.1l-4.1-3.1M7.2 18.5h9.6"/>'
     }
