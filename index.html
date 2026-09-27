@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=7">
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
 </head>
 <body>
@@ -28,15 +28,28 @@
 <header class="nav" id="nav">
   <a class="nav-logo" href="#top" aria-label="Droplet Labs Paths, back to top"><img src="assets/logo-horizontal-dark-t.png" alt="Droplet Labs" width="1422" height="314"></a>
   <nav class="nav-links" aria-label="Sections">
-    <a href="#river" data-t="nav.paths">Paths</a>
+    <button class="nav-drop" type="button" id="pathsBtn" aria-expanded="false" aria-controls="pathsPanel"><span data-t="nav.paths">Paths</span><svg class="chev" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg></button>
+    <a href="#river" data-t="nav.journey">Journey</a>
     <a href="#how" data-t="nav.how">How it works</a>
-    <a href="#labs" data-t="nav.labs">Droplet Labs</a>
   </nav>
   <div class="nav-end">
+    <button class="nav-icon" type="button" id="searchBtn" aria-label="Search paths" data-t-aria="nav.search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.5"/><path d="M13.2 13.2 17 17"/></svg></button>
     <button class="lang" type="button" id="langBtn" aria-label="Switch language">中文</button>
     <a class="btn btn-white nav-cta" data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener"><span data-t="nav.visit">Visit Droplet Labs</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+    <button class="nav-icon nav-burger" type="button" id="menuBtn" aria-expanded="false" aria-controls="pathsPanel" aria-label="Menu"><span></span><span></span></button>
   </div>
 </header>
+
+<div class="paths-panel" id="pathsPanel" hidden>
+  <p class="pp-h" data-t="nav.panelTitle">All paths</p>
+  <div class="pp-grid" id="ppGrid"></div>
+  <div class="pp-foot">
+    <a href="#all" data-t="nav.all">See every path</a>
+    <a href="#river" class="pp-m" data-t="nav.journey">Journey</a>
+    <a href="#how" class="pp-m" data-t="nav.how">How it works</a>
+    <a class="pp-m pp-ext" data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener"><span data-t="nav.visit">Visit Droplet Labs</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></a>
+  </div>
+</div>
 
 <main id="top">
 
@@ -51,7 +64,7 @@
       <form class="seek glass" id="seek" autocomplete="off" role="search">
         <label class="sr" for="seekInput" data-t="hero.search">Search</label>
         <div class="seek-field">
-          <input id="seekInput" type="text" spellcheck="false">
+          <input id="seekInput" type="text" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="seekResults">
           <span class="seek-ph" id="seekPh" aria-hidden="true"></span>
         </div>
         <div class="seek-row">
@@ -59,22 +72,11 @@
           <button class="seek-go" type="submit" id="seekGo" aria-label="Find my path"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></button>
         </div>
         <p class="seek-msg" id="seekMsg" hidden></p>
+        <div class="seek-results" id="seekResults" role="listbox" hidden></div>
       </form>
     </div>
-    <a class="scroll-cue" href="#river"><span data-t="hero.scroll">Scroll to follow the river</span><i></i></a>
+    <a class="scroll-cue" href="#all"><span data-t="hero.scroll">Scroll to follow the river</span><i></i></a>
   </section>
-
-  <!-- RIVER JOURNEY -->
-  <section class="river" id="river">
-    <header class="river-head" data-shot="rise" data-scrim="0">
-      <p class="eyebrow reveal" data-t="river.eyebrow">The paths</p>
-      <h2 class="display reveal" data-t="river.title">Follow the river.</h2>
-      <p class="lede reveal" data-t="river.sub"></p>
-    </header>
-    <div id="steps"></div>
-  </section>
-
-  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
   <!-- GRID -->
   <section class="grid-sec" id="all" data-shot="overview" data-scrim="1">
@@ -85,7 +87,20 @@
         <p class="lede reveal" data-t="grid.sub"></p>
       </header>
       <div class="cards" id="cards"></div>
+      <a class="tour-link reveal" href="#river"><span data-t="grid.tour">Want a closer look at each one? Follow the river</span><i aria-hidden="true"></i></a>
     </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+  <!-- RIVER JOURNEY -->
+  <section class="river" id="river">
+    <header class="river-head" data-shot="rise" data-scrim="0">
+      <p class="eyebrow reveal" data-t="river.eyebrow">The paths</p>
+      <h2 class="display reveal" data-t="river.title">Follow the river.</h2>
+      <p class="lede reveal" data-t="river.sub"></p>
+    </header>
+    <div id="steps"></div>
   </section>
 
   <!-- NUMBERS -->
@@ -148,8 +163,9 @@
 
 <nav class="rail" id="rail" aria-label="Paths"></nav>
 
-<script src="courses.js?v=10"></script>
-<script src="main.js?v=5"></script>
-<script type="module" src="scene.js?v=5"></script>
+<script src="courses.js?v=11"></script>
+<script src="search.js?v=2"></script>
+<script src="main.js?v=7"></script>
+<script type="module" src="scene.js?v=6"></script>
 </body>
 </html>

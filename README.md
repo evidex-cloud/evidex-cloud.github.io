@@ -13,7 +13,8 @@ Static site, no build step. Three.js 0.170 loads from jsDelivr via the import ma
 | `courses.js` | **All content.** Course list, colours, links, stats, and every line of EN / 中文 copy. |
 | `index.html` | Page skeleton. Sections with `data-shot` are camera anchors. |
 | `styles.css` | Night palette, glass panels, tilt cards, phone layout. |
-| `main.js` | UI: language switch, search, journey cards, grid, counters, tilt, scroll state. |
+| `search.js` | Course search: ranks every related path across names, subjects, tags, keywords and descriptions in both languages. |
+| `main.js` | UI: language switch, search results, nav paths panel, journey cards, grid, counters, tilt, scroll state. |
 | `scene.js` | The 3D world: sky, stars, clouds, river, Droplet mark, course orbs, bloom, scroll camera. |
 | `assets/` | Droplet Labs logos and favicons (from `droplet-labs-v2/assets`). |
 
@@ -33,4 +34,4 @@ python tools/serve.py 8791
 
 The launch config `droplet-labs-paths` in `C:\claude-projects\.claude\launch.json` does the same.
 
-Debug query parameters (for screenshots): `?nl` skips the loader, `?snap` removes camera easing, `?at=<shot>` renders the page as if scrolled to that anchor (`hero`, `rise`, `course:<id>`, `overview`, `orbit`, `orbit2`, `labs`), `?lang=zh|en`.
+Debug query parameters (for screenshots): `?nl` skips the loader, `?snap` removes camera easing, `?at=<shot>` renders the page as if scrolled to that anchor (`hero`, `rise`, `course:<id>`, `overview`, `orbit`, `orbit2`, `labs`), `?lang=zh|en`. `?q=bitcoin` opens the page with that search already run (shareable).

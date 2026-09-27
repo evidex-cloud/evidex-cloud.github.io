@@ -26,7 +26,7 @@ window.PATHS = {
       ask: { en: 'Understand Bitcoin from first principles', zh: '从第一性原理看懂比特币' },
       stages: 13, lessons: 68, demos: 167,
       tags: { en: ['secp256k1', 'Proof of work', 'Taproot', 'Lightning'], zh: ['secp256k1', '工作量证明', 'Taproot', '闪电网络'] },
-      keywords: 'bitcoin btc satoshi hash sha ecdsa schnorr secp256k1 elliptic curve signature mining proof of work difficulty node mempool utxo transaction script taproot segwit wallet bip39 hd psbt multisig lightning privacy covenant quantum 比特币 聪 哈希 椭圆曲线 签名 挖矿 工作量证明 难度 节点 交易 脚本 钱包 助记词 多签 闪电 隐私 量子',
+      keywords: 'bitcoin btc satoshi hash sha ecdsa schnorr secp256k1 elliptic curve signature mining proof of work difficulty node mempool utxo transaction script taproot segwit wallet bip39 hd psbt multisig lightning privacy covenant quantum 比特币 聪 哈希 椭圆曲线 签名 挖矿 工作量证明 难度 节点 交易 脚本 钱包 助记词 多签 闪电 隐私 量子 blockchain crypto cryptocurrency onchain 区块链 加密 加密货币 链上',
       url: 'https://evidex-cloud.github.io/nextdawn-satoshi-path/',
       glyph: '<path d="M8.5 5v14M8.5 5h5a3.25 3.25 0 0 1 0 6.5h-5M8.5 11.5h6a3.75 3.75 0 0 1 0 7.5h-6M10.5 2.8V5M13.5 2.8V5M10.5 19v2.2M13.5 19v2.2M6.5 5h2M6.5 19h2"/>'
     },
@@ -42,7 +42,7 @@ window.PATHS = {
       ask: { en: 'Read MSTR’s preferreds like an analyst', zh: '像分析师一样看懂 MSTR 优先股' },
       stages: 22, lessons: 115, demos: 115,
       tags: { en: ['30-year yield', 'DeFi', 'mNAV', 'BTC Rating'], zh: ['30 年期国债', 'DeFi', 'mNAV', 'BTC 评级'] },
-      keywords: 'finance economy bond bonds yield treasury 30-year stock stocks equity capital stack preferred convertible defi stablecoin tokenization dat treasury company mstr strategy strive asst mnav btc rating strc sata macro fed inflation ai 金融 经济 债券 收益率 国债 股票 优先股 可转债 稳定币 代币化 财库 微策略 宏观 美联储 通胀',
+      keywords: 'finance economy bond bonds yield treasury 30-year stock stocks equity capital stack preferred convertible defi stablecoin tokenization dat treasury company mstr strategy strive asst mnav btc rating strc sata macro fed inflation ai 金融 经济 债券 收益率 国债 股票 优先股 可转债 稳定币 代币化 财库 微策略 宏观 美联储 通胀 crypto blockchain onchain 加密 区块链 链上',
       url: 'https://evidex-cloud.github.io/droplet-labs-finance-path/',
       glyph: '<rect x="3.5" y="15.5" width="17" height="4.5" rx="1.2"/><rect x="6" y="9.75" width="12" height="4" rx="1.2"/><rect x="8.5" y="4" width="7" height="4" rx="1.2"/>'
     },
@@ -74,7 +74,7 @@ window.PATHS = {
       ask: { en: 'Design an auction that actually works', zh: '设计一场真正有效的拍卖' },
       stages: 21, lessons: 106, demos: 106,
       tags: { en: ['Nash equilibrium', 'Auctions', 'Mechanism design', 'Behavioral'], zh: ['纳什均衡', '拍卖', '机制设计', '行为经济学'] },
-      keywords: 'game theory strategy nash equilibrium prisoner dilemma auction mechanism design incentive behavioral platform 博弈 纳什 囚徒 拍卖 机制 激励 行为',
+      keywords: 'game theory strategy nash equilibrium prisoner dilemma auction mechanism design incentive behavioral platform 博弈 纳什 囚徒 拍卖 机制 激励 行为 crypto crypto-economics tokenomics ai agents 加密经济 智能体',
       url: 'https://evidex-cloud.github.io/droplet-labs-strategy-path/',
       glyph: '<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M12 3.5v17M3.5 12h17"/><circle cx="16.25" cy="16.25" r="1.6" fill="currentColor" stroke="none"/>'
     },
@@ -106,7 +106,7 @@ window.PATHS = {
       ask: { en: 'Tokenize a real-world asset', zh: '把一项现实资产代币化' },
       stages: 15, lessons: 66, demos: 66,
       tags: { en: ['ERC-3643', 'SPV', 'Proof of reserve', 'Regulation'], zh: ['ERC-3643', 'SPV', '储备证明', '监管'] },
-      keywords: 'rwa real world asset tokenization token treasury bond spv nav oracle proof of reserve erc-3643 regulation compliance 现实资产 代币化 国债 预言机 储备 监管 合规',
+      keywords: 'rwa real world asset tokenization token treasury bond spv nav oracle proof of reserve erc-3643 regulation compliance 现实资产 代币化 国债 预言机 储备 监管 合规 blockchain onchain crypto 区块链 链上 上链',
       url: 'https://evidex-cloud.github.io/droplet-labs-rwa-path/',
       glyph: '<path d="M3 9.5 12 4l9 5.5M4.5 20.5h15M6 10.5v7M10 10.5v7M14 10.5v7M18 10.5v7M3.5 20.5h17"/>'
     },
@@ -122,7 +122,7 @@ window.PATHS = {
       ask: { en: 'Design for the agent economy', zh: '为智能体经济做设计' },
       stages: 17, lessons: 90, demos: 205,
       tags: { en: ['LLMs & agents', 'MCP · x402', 'ERC-8004', 'TEE · ZK'], zh: ['大模型与智能体', 'MCP · x402', 'ERC-8004', 'TEE · ZK'] },
-      keywords: 'ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计',
+      keywords: 'ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计 blockchain onchain 区块链 链上',
       url: 'https://evidex-cloud.github.io/droplet-labs-agent-path/',
       glyph: '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><path d="M12 7.2V11.6M6.7 17.1l4.1-3.1M17.3 17.1l-4.1-3.1M7.2 18.5h9.6"/>'
     },
@@ -138,7 +138,7 @@ window.PATHS = {
       ask: { en: 'Build and launch your own token', zh: '亲手发行自己的代币' },
       stages: 23, lessons: 116, demos: 285,
       tags: { en: ['Ethereum · EVM', 'Solidity', 'DeFi · L2s', 'ZK · privacy'], zh: ['以太坊 · EVM', 'Solidity', 'DeFi · L2', '零知识 · 隐私'] },
-      keywords: 'crypto blockchain web3 ethereum eth evm solidity smart contract erc-20 erc-721 token nft wallet seed phrase gas eip-1559 foundry deploy l2 rollup layer 2 base arbitrum optimism blob solana xrp tron zcash hyperliquid chainlink near cosmos polkadot consensus proof of stake defi amm uniswap lending aave oracle perps mev stablecoin usdc tokenomics airdrop dao governance prediction market polymarket zk zero knowledge snark stark privacy bridge restaking account abstraction eip-7702 ai agents regulation 加密 区块链 以太坊 智能合约 代币 钱包 助记词 燃料费 二层 卷叠 共识 权益证明 去中心化金融 预言机 稳定币 代币经济 空投 治理 预测市场 零知识 隐私 跨链桥 账户抽象 监管',
+      keywords: 'crypto blockchain web3 ethereum eth evm solidity smart contract erc-20 erc-721 token nft wallet seed phrase gas eip-1559 foundry deploy l2 rollup layer 2 base arbitrum optimism blob solana xrp tron zcash hyperliquid chainlink near cosmos polkadot consensus proof of stake defi amm uniswap lending aave oracle perps mev stablecoin usdc tokenomics airdrop dao governance prediction market polymarket zk zero knowledge snark stark privacy bridge restaking account abstraction eip-7702 ai agents regulation 加密 区块链 以太坊 智能合约 代币 钱包 助记词 燃料费 二层 卷叠 共识 权益证明 去中心化金融 预言机 稳定币 代币经济 空投 治理 预测市场 零知识 隐私 跨链桥 账户抽象 监管 bitcoin btc onchain 比特币 链上',
       url: 'https://evidex-cloud.github.io/droplet-labs-crypto-path/',
       glyph: '<path d="M12 2.5 5.5 12.2 12 16l6.5-3.8Z"/><path d="M5.5 13.8 12 21.5l6.5-7.7L12 17.6Z"/><path d="M12 2.5V16"/>'
     }
@@ -148,18 +148,24 @@ window.PATHS = {
 /* Interface copy. {n} = number of courses as a word, {lessons} etc. are live totals. */
 window.COPY = {
   en: {
-    nav: { paths: 'Paths', how: 'How it works', labs: 'Droplet Labs', visit: 'Visit Droplet Labs' },
+    nav: { paths: 'Paths', journey: 'Journey', how: 'How it works', visit: 'Visit Droplet Labs', search: 'Search paths', panelTitle: 'All paths', all: 'See every path', menu: 'Menu' },
     hero: {
       kicker: '{count} free courses · {lessons} lessons · EN / 中文',
       title: '{N} paths into *the new economy.*',
       sub: 'Free, bilingual, hands-on courses from Droplet Labs. Money, finance, markets, strategy, assets, crypto and AI agents, taken from zero to deep.',
       search: 'Search',
       go: 'Find my path',
-      noMatch: 'No path matches yet. Try "bitcoin", "auction" or "agents".',
-      scroll: 'Scroll to follow the river'
+      noMatch: 'No path matches "{q}" yet. Try "bitcoin", "auction" or "agents".',
+      results: '{n} paths match',
+      resultsOne: '1 path matches',
+      matched: 'Matched',
+      open: 'Open',
+      details: 'Details',
+      hint: '↑ ↓ to move · Enter to open · Esc to clear',
+      scroll: 'Scroll to pick a path'
     },
     river: {
-      eyebrow: 'The paths',
+      eyebrow: 'The journey',
       title: 'Follow the river.',
       sub: 'Each path is one line from first intuition to expert craft. Scroll to travel from droplet to droplet.'
     },
@@ -168,6 +174,7 @@ window.COPY = {
       eyebrow: 'Every path',
       title: 'Pick any path.',
       sub: 'Each course runs in your browser. No sign-up, no fee.',
+      tour: 'Want a closer look at each one? Follow the river',
       open: 'Open',
       nextName: 'Next path',
       nextLine: 'A new droplet is forming. More courses are on the way.'
@@ -193,18 +200,24 @@ window.COPY = {
     orb: 'Click to travel'
   },
   zh: {
-    nav: { paths: '课程', how: '学习方式', labs: 'Droplet Labs', visit: '访问 Droplet Labs' },
+    nav: { paths: '课程', journey: '逐一细看', how: '学习方式', visit: '访问 Droplet Labs', search: '搜索课程', panelTitle: '全部课程', all: '查看全部课程', menu: '菜单' },
     hero: {
       kicker: '{count} 门免费课程 · {lessons} 节课 · 中文 / EN',
       title: '{N}条路，*通往新经济。*',
       sub: 'Droplet Labs 出品的免费、双语、可动手的课程。货币、金融、市场、博弈、资产、加密与 AI 智能体，从零走到深处。',
       search: '搜索',
       go: '找到我的路',
-      noMatch: '暂时没有匹配的课程。试试「比特币」「拍卖」或「智能体」。',
-      scroll: '向下滚动，顺流而行'
+      noMatch: '暂时没有与「{q}」相关的课程。试试「比特币」「拍卖」或「智能体」。',
+      results: '{n} 门课程相关',
+      resultsOne: '1 门课程相关',
+      matched: '命中',
+      open: '进入',
+      details: '详情',
+      hint: '↑ ↓ 选择 · Enter 打开 · Esc 清空',
+      scroll: '向下滚动，挑一条路'
     },
     river: {
-      eyebrow: '课程',
+      eyebrow: '逐一细看',
       title: '顺流而下。',
       sub: '每条路都是一条主线，从第一直觉走到专家手艺。向下滚动，从一滴水走到下一滴。'
     },
@@ -213,6 +226,7 @@ window.COPY = {
       eyebrow: '全部课程',
       title: '任选一条路。',
       sub: '每门课都在浏览器里运行。无需注册，完全免费。',
+      tour: '想逐门细看？顺着星河往下走',
       open: '进入',
       nextName: '下一条路',
       nextLine: '新的一滴正在凝结。更多课程在路上。'
