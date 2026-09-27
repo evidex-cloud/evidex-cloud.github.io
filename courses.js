@@ -125,6 +125,22 @@ window.PATHS = {
       keywords: 'ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计',
       url: 'https://evidex-cloud.github.io/droplet-labs-agent-path/',
       glyph: '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><path d="M12 7.2V11.6M6.7 17.1l4.1-3.1M17.3 17.1l-4.1-3.1M7.2 18.5h9.6"/>'
+    },
+    {
+      id: 'crypto',
+      color: '#E879F9',
+      name: { en: 'Crypto Path', zh: '加密之路' },
+      subject: { en: 'Ethereum, EVM & crypto', zh: '以太坊、EVM 与加密' },
+      line: {
+        en: 'From your first wallet to Ethereum and the EVM, Solidity and a token of your own — then L2s, DeFi, NFTs, DAOs, zero-knowledge proofs, privacy and AI.',
+        zh: '从第一个钱包到以太坊与 EVM、Solidity，再亲手发一枚自己的代币——然后是 L2、DeFi、NFT、DAO、零知识证明、隐私与 AI。'
+      },
+      ask: { en: 'Build and launch your own token', zh: '亲手发行自己的代币' },
+      stages: 23, lessons: 116, demos: 285,
+      tags: { en: ['Ethereum · EVM', 'Solidity', 'DeFi · L2s', 'ZK · privacy'], zh: ['以太坊 · EVM', 'Solidity', 'DeFi · L2', '零知识 · 隐私'] },
+      keywords: 'crypto blockchain web3 ethereum eth evm solidity smart contract erc-20 erc-721 token nft wallet seed phrase gas eip-1559 foundry deploy l2 rollup layer 2 base arbitrum optimism blob solana xrp tron zcash hyperliquid chainlink near cosmos polkadot consensus proof of stake defi amm uniswap lending aave oracle perps mev stablecoin usdc tokenomics airdrop dao governance prediction market polymarket zk zero knowledge snark stark privacy bridge restaking account abstraction eip-7702 ai agents regulation 加密 区块链 以太坊 智能合约 代币 钱包 助记词 燃料费 二层 卷叠 共识 权益证明 去中心化金融 预言机 稳定币 代币经济 空投 治理 预测市场 零知识 隐私 跨链桥 账户抽象 监管',
+      url: 'https://evidex-cloud.github.io/droplet-labs-crypto-path/',
+      glyph: '<path d="M12 2.5 5.5 12.2 12 16l6.5-3.8Z"/><path d="M5.5 13.8 12 21.5l6.5-7.7L12 17.6Z"/><path d="M12 2.5V16"/>'
     }
   ]
 };
@@ -136,7 +152,7 @@ window.COPY = {
     hero: {
       kicker: '{count} free courses · {lessons} lessons · EN / 中文',
       title: '{N} paths into *the new economy.*',
-      sub: 'Free, bilingual, hands-on courses from Droplet Labs. Money, finance, markets, strategy, assets and AI agents, taken from zero to deep.',
+      sub: 'Free, bilingual, hands-on courses from Droplet Labs. Money, finance, markets, strategy, assets, crypto and AI agents, taken from zero to deep.',
       search: 'Search',
       go: 'Find my path',
       noMatch: 'No path matches yet. Try "bitcoin", "auction" or "agents".',
@@ -181,7 +197,7 @@ window.COPY = {
     hero: {
       kicker: '{count} 门免费课程 · {lessons} 节课 · 中文 / EN',
       title: '{N}条路，*通往新经济。*',
-      sub: 'Droplet Labs 出品的免费、双语、可动手的课程。货币、金融、市场、博弈、资产与 AI 智能体，从零走到深处。',
+      sub: 'Droplet Labs 出品的免费、双语、可动手的课程。货币、金融、市场、博弈、资产、加密与 AI 智能体，从零走到深处。',
       search: '搜索',
       go: '找到我的路',
       noMatch: '暂时没有匹配的课程。试试「比特币」「拍卖」或「智能体」。',
