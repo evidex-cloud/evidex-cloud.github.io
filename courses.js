@@ -120,9 +120,9 @@ window.PATHS = {
         zh: '智能体怎样思考和行动，加密怎样给它钥匙、钱、身份与可验证的信任——最后亲手设计整个系统。'
       },
       ask: { en: 'Design for the agent economy', zh: '为智能体经济做设计' },
-      stages: 17, lessons: 90, demos: 205,
+      stages: 17, lessons: 91, demos: 208,
       tags: { en: ['LLMs & agents', 'MCP · x402', 'ERC-8004', 'TEE · ZK'], zh: ['大模型与智能体', 'MCP · x402', 'ERC-8004', 'TEE · ZK'] },
-      keywords: 'ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计 blockchain onchain 区块链 链上',
+      keywords: 'seo geo generative engine optimization aeo aco agentic commerce optimization ai visibility ai agent agents llm transformer attention tool calling context memory evals prompt injection mcp a2a agent card x402 ap2 eip-3009 erc-8004 kya did verifiable credentials smart account erc-4337 eip-7702 session key wallet tee remote attestation zk zkml reputation sybil escrow auction mechanism design defi intents bittensor regulation design 智能体 大模型 注意力 工具 提示词注入 协议 支付 身份 钱包 会话密钥 信誉 零知识 可信执行环境 托管 拍卖 机制设计 监管 系统设计 blockchain onchain 区块链 链上',
       url: 'https://evidex-cloud.github.io/droplet-labs-agent-path/',
       glyph: '<circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="18.5" r="2.2"/><circle cx="19" cy="18.5" r="2.2"/><circle cx="12" cy="13" r="1.4" fill="currentColor" stroke="none"/><path d="M12 7.2V11.6M6.7 17.1l4.1-3.1M17.3 17.1l-4.1-3.1M7.2 18.5h9.6"/>'
     },
