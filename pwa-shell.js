@@ -25,6 +25,31 @@
   // 2. On a course page, a small round button back to all paths.
   var p = location.pathname;
   if (p === '/' || p === '/index.html') return;
+
+  // 3. The Home Screen app draws under the status bar (black-translucent), and the course pages
+  //    don't reserve that space. Push their fixed top bar, reading bar and lesson drawer below the
+  //    clock / Dynamic Island, and keep bottom cards above the home indicator. All courses share
+  //    one shell, so --nav-top drives the bar and every sticky offset under it.
+  var css = document.createElement('style');
+  css.id = 'dl-safe-area';
+  css.textContent =
+    ':root{--nav-top:calc(10px + env(safe-area-inset-top, 0px)) !important}' +
+    '.readbar{top:env(safe-area-inset-top, 0px) !important}' +
+    '@media (max-width:1080px){' +
+      '.sidebar{padding-top:calc(22px + env(safe-area-inset-top, 0px)) !important;padding-bottom:calc(40px + env(safe-area-inset-bottom, 0px)) !important}' +
+      '.gloss-card{bottom:calc(14px + env(safe-area-inset-bottom, 0px)) !important}' +
+    '}';
+  (document.head || document.documentElement).appendChild(css);
+  // The status bar text is white in this mode; course pages are light, so give it a dark strip.
+  function strip() {
+    if (document.getElementById('dl-statusbar')) return;
+    var s = document.createElement('div');
+    s.id = 'dl-statusbar';
+    s.setAttribute('aria-hidden', 'true');
+    s.style.cssText = 'position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top, 0px);background:#0B0B0D;z-index:2147482999;pointer-events:none';
+    document.body.appendChild(s);
+  }
+  if (document.body) strip(); else document.addEventListener('DOMContentLoaded', strip);
   function add() {
     if (document.getElementById('dl-home')) return;
     var zh = /^zh/i.test(document.documentElement.lang || '');
