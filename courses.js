@@ -196,6 +196,23 @@ window.COPY = {
       cta: 'Visit dropletlabs.xyz',
       mail: 'Write to us'
     },
+    offline: {
+      save: 'Save all paths for offline',
+      saving: 'Saving for offline…',
+      updating: 'Checking for updates…',
+      saved: 'Saved for offline',
+      update: 'Check for updates',
+      remove: 'Remove',
+      confirmRemove: 'Tap again to remove',
+      removed: 'Offline copy removed.',
+      upToDate: 'Everything is up to date.',
+      failed: '{n} files could not be saved. Tap “Check for updates” on a steady connection.',
+      error: 'Saving stopped. Check your connection and try again.',
+      needNet: 'Connect to the internet to save.',
+      iosHint: 'On iPhone: tap Share → Add to Home Screen, open it from there, then save.',
+      paths: '{n} paths',
+      badge: 'offline'
+    },
     foot: { paths: 'Paths', labs: 'Droplet Labs', site: 'Website', note: 'For education only. Not investment advice.', top: 'Back to top' },
     orb: 'Click to travel'
   },
@@ -247,6 +264,23 @@ window.COPY = {
       sub: '这些课程是 Droplet Labs 的教育工作。我们也为中小企业研究和构建智能体系统。',
       cta: '访问 dropletlabs.xyz',
       mail: '联系我们'
+    },
+    offline: {
+      save: '下载全部课程供离线使用',
+      saving: '正在下载离线副本…',
+      updating: '正在检查更新…',
+      saved: '已可离线使用',
+      update: '检查更新',
+      remove: '删除',
+      confirmRemove: '再点一次确认删除',
+      removed: '离线副本已删除。',
+      upToDate: '已是最新版本。',
+      failed: '有 {n} 个文件没存下来，请在网络稳定时点「检查更新」。',
+      error: '下载中断了，请检查网络后重试。',
+      needNet: '请先连上网络再下载。',
+      iosHint: 'iPhone 上：点「分享」→「添加到主屏幕」，从主屏幕打开后再下载。',
+      paths: '{n} 门课程',
+      badge: '可离线'
     },
     foot: { paths: '课程', labs: 'Droplet Labs', site: '官网', note: '仅供教育，不构成投资建议。', top: '回到顶部' },
     orb: '点击前往'
