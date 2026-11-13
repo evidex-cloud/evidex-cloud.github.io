@@ -157,6 +157,10 @@
       return '<li><a href="' + c.url + '" target="_blank" rel="noopener" style="--c:' + c.color + '"><i></i>' + esc(L(c.name)) + '</a></li>';
     }).join('');
     $$('[data-home]').forEach(function (a) { a.href = P.site.home; });
+    var memberUrl = P.site.member + '?lang=' + lang;
+    $('#memberCard').href = memberUrl;
+    $$('[data-member]').forEach(function (a) { a.href = memberUrl; });
+    $$('[data-privacy]').forEach(function (a) { a.href = P.site.privacy + '?lang=' + lang; });
     $('#mailBtn').href = $('#footMail').href = 'mailto:' + P.site.email;
     $('#footMail').textContent = $('#mailLine').textContent = P.site.email;
   }

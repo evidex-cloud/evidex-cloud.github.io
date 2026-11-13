@@ -7,6 +7,8 @@
 window.PATHS = {
   site: {
     home: 'https://dropletlabs.xyz/',
+    member: 'https://dropletlabs.xyz/payment',   // the membership page (one-to-one teaching and research)
+    privacy: 'https://dropletlabs.xyz/privacy',  // privacy policy (covers the paths too)
     email: 'support@dropletlabs.xyz'
   },
 
@@ -213,7 +215,15 @@ window.COPY = {
       paths: '{n} paths',
       badge: 'offline'
     },
-    foot: { paths: 'Paths', labs: 'Droplet Labs', site: 'Website', note: 'For education only. Not investment advice.', top: 'Back to top' },
+    member: {
+      eyebrow: 'Custom membership',
+      title: 'Want a guide, one to one?',
+      sub: 'The paths stay free. Members get one-to-one teaching and a seat in our research, on a route planned around them.',
+      priceLabel: 'Early bird',
+      price: '¥10',
+      cta: 'Become a member'
+    },
+    foot: { paths: 'Paths', labs: 'Droplet Labs', site: 'Website', member: 'Membership', privacy: 'Privacy policy', note: 'For education only. Not investment advice.', top: 'Back to top' },
     orb: 'Click to travel'
   },
   zh: {
@@ -282,7 +292,15 @@ window.COPY = {
       paths: '{n} 门课程',
       badge: '可离线'
     },
-    foot: { paths: '课程', labs: 'Droplet Labs', site: '官网', note: '仅供教育，不构成投资建议。', top: '回到顶部' },
+    member: {
+      eyebrow: '定制化会员',
+      title: '想要一位一对一的老师？',
+      sub: '课程永远免费。会员可以获得 1 对 1 教学，参与我们的研究，走一条为你定制的路线。',
+      priceLabel: '早鸟价',
+      price: '¥10',
+      cta: '成为会员'
+    },
+    foot: { paths: '课程', labs: 'Droplet Labs', site: '官网', member: '定制化会员', privacy: '隐私条款', note: '仅供教育，不构成投资建议。', top: '回到顶部' },
     orb: '点击前往'
   }
 };

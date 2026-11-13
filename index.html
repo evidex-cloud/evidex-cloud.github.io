@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="styles.css?v=8">
+<link rel="stylesheet" href="styles.css?v=9">
 <script type="importmap">{"imports":{"three":"./vendor/three/build/three.module.min.js","three/addons/":"./vendor/three/examples/jsm/"}}</script>
 </head>
 <body>
@@ -105,6 +105,23 @@
     </div>
   </section>
 
+  <!-- MEMBERSHIP: one-to-one teaching and research (links to dropletlabs.xyz/payment) -->
+  <section class="member-sec" id="member" data-scrim="1">
+    <div class="wrap">
+      <a class="member-card glass reveal" id="memberCard" href="https://dropletlabs.xyz/payment" target="_blank" rel="noopener">
+        <div class="mc-copy">
+          <p class="eyebrow" data-t="member.eyebrow">Custom membership</p>
+          <h2 class="mc-title" data-t="member.title">Want a guide, one to one?</h2>
+          <p class="mc-sub" data-t="member.sub"></p>
+        </div>
+        <div class="mc-act">
+          <span class="mc-price"><small data-t="member.priceLabel">Early bird</small><b data-t="member.price">¥10</b></span>
+          <span class="btn btn-white btn-lg"><span data-t="member.cta">Become a member</span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 11 11 5M6 5h5v5"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </section>
+
   <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
 
   <!-- RIVER JOURNEY -->
@@ -161,12 +178,14 @@
       <p class="foot-h" data-t="foot.labs">Droplet Labs</p>
       <ul>
         <li><a data-home href="https://dropletlabs.xyz/" target="_blank" rel="noopener" data-t="foot.site">Website</a></li>
+        <li><a data-member href="https://dropletlabs.xyz/payment" target="_blank" rel="noopener" data-t="foot.member">Membership</a></li>
+        <li><a data-privacy href="https://dropletlabs.xyz/privacy" target="_blank" rel="noopener" data-t="foot.privacy">Privacy policy</a></li>
         <li><a id="footMail" href="mailto:support@dropletlabs.xyz">support@dropletlabs.xyz</a></li>
       </ul>
     </div>
   </div>
   <div class="wrap foot-bottom">
-    <span>© Droplet Labs</span>
+    <span>© Droplet Technology Limited</span>
     <span data-t="foot.note">For education only. Not investment advice.</span>
     <span class="foot-end">
       <button class="lang" type="button" id="langBtn2">中文</button>
@@ -177,9 +196,9 @@
 
 <nav class="rail" id="rail" aria-label="Paths"></nav>
 
-<script src="courses.js?v=13"></script>
+<script src="courses.js?v=15"></script>
 <script src="search.js?v=2"></script>
-<script src="main.js?v=7"></script>
+<script src="main.js?v=9"></script>
 <script src="pwa-shell.js?v=2"></script>
 <script src="offline.js?v=1"></script>
 <script type="module" src="scene.js?v=6"></script>
